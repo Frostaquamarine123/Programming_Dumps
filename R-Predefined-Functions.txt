@@ -1,0 +1,185 @@
+seq(begin , end , step By)-it creates a list of elements by taking begin index , end index and step by , to find more about sequence type help("seq")
+eg - seq(0,12,by=2)
+[1]  0  2  4  6  8 10 12
+Sort(Vector) - It sorts a vector in ascending order > v <- c(1,2,56,43,25)
+> sort(v)
+[1]  1  2 25 43 56
+Sort(vector,decreasing = TRUE) - it sorts a vector indecreasing order > sort(v,decreasing = TRUE)
+[1] 56 43 25  2  1
+Note Sort function even sorts in alphabets
+str(vector/object/dataframe) - shows the structure of the object or vector > str(v)
+ num [1:5] 1 2 56 43 25
+ or  str(mtcars)
+'data.frame':	32 obs. of  11 variables:
+ $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+ $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+ $ disp: num  160 160 108 258 360 ...
+ $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
+ $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+ $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+ $ qsec: num  16.5 17 18.6 19.4 17 ...
+ $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
+ $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
+ $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
+ $ carb: num  4 4 1 1 2 1 4 2 2 4 ...
+ summary(vector/object/dataframe) - shows the full summary 
+ ex- summary(mtcars)
+      mpg             cyl             disp             hp             drat             wt             qsec             vs        
+ Min.   :10.40   Min.   :4.000   Min.   : 71.1   Min.   : 52.0   Min.   :2.760   Min.   :1.513   Min.   :14.50   Min.   :0.0000  
+ 1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8   1st Qu.: 96.5   1st Qu.:3.080   1st Qu.:2.581   1st Qu.:16.89   1st Qu.:0.0000  
+ Median :19.20   Median :6.000   Median :196.3   Median :123.0   Median :3.695   Median :3.325   Median :17.71   Median :0.0000  
+ Mean   :20.09   Mean   :6.188   Mean   :230.7   Mean   :146.7   Mean   :3.597   Mean   :3.217   Mean   :17.85   Mean   :0.4375  
+ 3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0   3rd Qu.:180.0   3rd Qu.:3.920   3rd Qu.:3.610   3rd Qu.:18.90   3rd Qu.:1.0000  
+ Max.   :33.90   Max.   :8.000   Max.   :472.0   Max.   :335.0   Max.   :4.930   Max.   :5.424   Max.   :22.90   Max.   :1.0000  
+       am              gear            carb      
+ Min.   :0.0000   Min.   :3.000   Min.   :1.000  
+ 1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:2.000  
+ Median :0.0000   Median :4.000   Median :2.000  
+ Mean   :0.4062   Mean   :3.688   Mean   :2.812  
+ 3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000  
+ Max.   :1.0000   Max.   :5.000   Max.   :8.000  
+ append(1st vector/list , 2nd vector/list) - it appends two vectors/list into one 
+ ex - v1 <- 1:10
+> v2 <- 35:40
+> append(v1,v2)
+ [1]  1  2  3  4  5  6  7  8  9 10 35 36 37 38 39 40
+> 
+is.*() - is used to check whether the data does belong to a certain class of data 
+ex-> v<- c(1:10)
+> v
+ [1]  1  2  3  4  5  6  7  8  9 10
+> is.vector(v)
+[1] TRUE
+as.*()- is used to convert a data to a particular data type 
+a<- c(35:40)
+> a
+[1] 35 36 37 38 39 40
+> as.list(a)
+[[1]]
+[1] 35
+
+[[2]]
+[1] 36
+
+[[3]]
+[1] 37
+
+[[4]]
+[1] 38
+
+[[5]]
+[1] 39
+
+[[6]]
+[1] 40
+
+sample(x= 1:10,1) - it is used to print sample of numbers , note it will not return anything untill you print it 
+ex - > print(sample(x = 1:10,1))
+[1] 5
+
+# Program to add a random number with user number in R
+example -
+addrand <- function(x){
+  ran <- sample(1:100,1)
+  return(x+ran)
+  
+}
+print(addrand(10))
+
+Output
+> print(addrand(10))
+[1] 55
+> print(addrand(10))
+[1] 76
+
+apply - this function is used to automatically convert a particular function into a certain kind of data based on the prefix applied 
+lapply - converts the following to list
+ex - 
+addrand <- function(x){
+  ran <- sample(1:100,1)
+  return(x+ran)
+  
+}
+print(addrand(10))
+
+v <- c(1,2,3,4,5)
+
+result <- lapply(v, addrand)
+print(result)
+
+output 
+print(result)
+[[1]]
+[1] 22
+
+[[2]]
+[1] 16
+
+[[3]]
+[1] 42
+
+[[4]]
+[1] 86
+
+[[5]]
+[1] 71
+sapply - converts the function to vector 
+anonymous functions - anonymous function are user defined functions which are used by user to reduce the space and time complexity ,  without reducing the functionality 
+example - v <- 1:5
+result <- sapply(v , function(num){num*2})
+print(result)
+
+#Regular Expressions - Regex
+grepl - is used to search whether the pattern of the searched keyword is present or not , example- text <- "Hi do you know whom you are voting for ?"
+> print(text)
+[1] "Hi do you know whom you are voting for ?"
+> grepl("you are voting for",text)
+[1] TRUE
+> grepl('dog',text)
+[1] FALSE
+note it does not change a type of variable , it just returns the same type ,in boolean representation
+ v <- 1:5
+> grepl(3,v)
+[1] FALSE FALSE  TRUE FALSE FALSE
+grep - In order to find the index of the matched keyword in expression , grep is used 
+example -
+grep(3,v)
+[1] 3
+> 
+grep('a',c('b','a'))
+[1] 2
+#Date and Timestamps
+Sys.date() - this func will treturn todays current date , note the class of date is "Date" and it is in time format of 'YYYY-MM-DD'
+example-  Sys.Date()
+[1] "2020-07-11"
+as.Date() - this function will convert the character date function to a date function
+example -
+c <- "2020-02-01"
+> class(c)
+[1] "character"
+> my.date <- as.Date(c)
+> class(my.date)
+[1] "Date"
+note in order to convert a random format date , use this reference table 
+%d Day of the month(Decimal numbers)
+%m Month(decimal numbers)
+%b Month(abbreviated)
+%B Month(Full name)
+%y Year(2 digits)
+%Y Year(4 digits)
+example -
+mynew.date <- as.Date("Nov-03-90",format = "%b-%d-%y")
+> print(mynew.date)
+[1] "1990-11-03"
+mydatenew <- as.Date("June,01,2002" , format = "%B,%d,%y")
+> mydatenew
+[1] "2020-06-01"
+POSIXct(date , format) - this function is used to convert a string into date format 
+note - to know more time formats use help(strptime)
+strptime - does the same function as POSIXct
+example - strptime("11:02:33",format = "%H:%M:%S")
+[1] "2020-07-12 11:02:33 IST"
+example - > as.POSIXct("11:02:03", format ="%H:%M:%S")
+[1] "2020-07-12 11:02:03 IST"
+
+

@@ -1,0 +1,212 @@
+JSP - An HTML Page with java code sprinkelled on it -it is a HTML Page
+JSP Give a dynamic content of the browser 
+
+JSP file is processed on the server 
+Results of the java code is processed in the server and returned in the browser 
+JSp file goes into WebContent folder 
+JSP file must have a .jsp extension
+
+Java Program to print hello world and 
+<html>
+
+<body>
+
+<h3> Hello World of Java</h3>
+
+The time on the server is <%= new java.util.Date() %> = converted to current date
+
+</body>
+
+
+</html>
+
+
+
+
+JSP Expression - a small java expression we can use in the page <%= Some expression %>
+. Compute a Expression 
+.Result of the expression is returned to browser 
+
+example 
+<html>
+
+
+<body>
+
+<h3> evaluating expression using JSP</h3>
+
+converting a string to uppercase <%= new String("hello world").toUpperCase() %>
+<br></br>
+
+25 multiplied by 4 equals <%= 25*4 %>
+<br></br>
+
+
+Is 75 less than 69 <%= 75 < 69 %>
+
+
+
+
+</body>
+
+
+</html>
+
+JSP Scriplet <% some java code :1 to many line %>
+
+.many line of code into one script 
+
+<% 
+// some expression 
+
+%>
+
+Example 
+<html>
+
+<body>
+
+<h3> Hello World of Java</h3>
+
+<%
+
+for(int i = 1; i<=5 ;i++){
+	
+	out.println("<br/>I really love to code"+i);
+}
+
+
+
+%>
+
+</body>
+
+
+
+</html>
+
+JSP Declaration <%! variable or method declaration %> 
+
+- If you want to encapsulate your code , you can do it with method declaration
+
+example 
+
+Built in Server Objects 
+request - Contains the request headers and form Data
+response - Provides HTTP support for sending response 
+out  - JSp writter for including content in HTML Page 
+session - Unique session for each user of the web appliacation 
+application - shared data for all users of the web application 
+
+Browser -> request -> JSP
+JSP -> response -> browser 
+
+Request Demo 
+
+Sample Form 
+
+Login-form.html
+<html>
+
+<body>
+
+
+<h3> lets know something about you </h3>
+
+<form action="login-response.jsp">
+
+ first name: <input type="text" name="firstname" />
+ 
+ <br/><br/>
+ 
+ last name :<input type="text" name="lastname" />
+ 
+ <br/><br/>
+ 
+ <select name="country">
+ <option>Brazil</option>
+ <option>France</option>
+ <option>Germany</option>
+ <option>India</option>
+ <option>Turkey</option>
+ <option>United States</option>
+ <option>United Kingdoms</option>
+ </select>
+ 
+ <br/><br/>
+ 
+ Favorite Programming Language :<br/>
+ 
+ <input type="radio" name="favoritelanguage" value="Java">Java
+ <input type="radio" name="favoritelanguage" value="C#">C#
+ <input type="radio" name="favoritelanguage" value="Python">Python
+ <input type="radio" name="favoritelanguage" value="Ruby">Ruby
+ 
+ <br/><br/>
+ 
+ Favorite IDE to develop :<br/>
+ 
+ <input type="checkbox" name="favoriteide" value="Pycharm">Pycharm
+ <input type="checkbox" name="favoriteide" value="Atom">Atom
+ <input type="checkbox" name="favoriteide" value="eclipse">Eclipse
+ <input type="checkbox" name="favoriteide" value="SublimeText3">SublimeText3
+ 
+ <br/><br/>
+ 
+ <input type="submit" value="Submit" />
+ 
+</form>
+</body>
+
+
+
+
+
+</html>
+
+login-response.jsp
+<html>
+
+<head><title> User Login Confirmation</title></head>
+
+<body>
+
+Welcome to the Club : ${param.firstname}  ${param.lastname}
+
+<br></br>
+
+ The students country : ${param.country}
+ 
+ <br></br>
+ 
+ The Students Favorite Programming Language : ${param.favoritelanguage}
+ 
+ <br></br>
+ 
+  The Students favorite ide are :
+ <ul>
+ 
+ <%
+ 
+   String[] ide = request.getParameterValues("favoriteide");
+   
+
+   for(String tempide : ide){
+	   out.print("<li>"+tempide+"</li>");
+   }
+ 
+ 
+ 
+ %>
+ 
+ 
+ </ul>
+
+
+</body>
+
+</html>
+
+Session- session tag is used to track the private data of the user , note that session of the user is tracked seperately in a browsers sessions
+
+
